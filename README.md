@@ -49,8 +49,8 @@ Follow these steps to get the entire application running on your local machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-name>
+    git clone https://github.com/bhikrant7/QuilBot.git
+    cd Quilbot
     ```
 
 2.  **Configure the Backend:**
