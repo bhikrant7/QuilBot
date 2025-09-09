@@ -1,0 +1,11 @@
+# Large, stable AI/ML libraries that change infrequently
+torch
+openai-whisper
+sentence-transformers
+numpy
+numba
+llvmlite
+# Dependencies that often come with the above
+tiktoken
+tqdm
+filelock

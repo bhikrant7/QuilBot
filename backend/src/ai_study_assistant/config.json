@@ -1,0 +1,15 @@
+{
+  "llm": {
+    "model": "deepseek-coder:6.7b",
+    "host": "http://host.docker.internal:11434",
+    "temperature": 0.7,
+    "max_tokens": 512,
+    "system_prompt": "You are an AI study assistant. Answer clearly and elaborate as per users context."
+  },
+  "embedding": {
+    "model": "all-MiniLM-L6-v2"
+  },
+  "rag": {
+    "top_k": 5
+  }
+}

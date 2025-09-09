@@ -1,0 +1,35 @@
+# Ignore the Dockerfile itself and the .dockerignore file
+Dockerfile
+.dockerignore
+
+# Ignore the virtual environment
+venv/
+.venv/
+
+# Ignore Git directory and related files
+.git/
+.gitignore
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore test files and sample data you don't need in production
+*.mp3
+*.mp4
+*.wav
+transcription_output.txt
+notebooks/
+research/
+
+# Ignore downloaded AI model files (this is the most important part)
+*.pt
+*.bin
+*.onnx
+*.engine
+
+# Ignore IDE and OS-specific files
+.vscode/
+.idea/
+*.DS_Store

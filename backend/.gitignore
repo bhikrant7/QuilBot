@@ -1,0 +1,7 @@
+venv/
+
+chroma_db_storage/*
+
+/TEST
+/template.txt
+/requirements.txt

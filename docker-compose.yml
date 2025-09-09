@@ -1,0 +1,56 @@
+version: '3.8'
+services:
+  # The Backend Service
+  backend:
+    build:
+      context: ./backend # Path to the 'backend' folder
+    container_name: ai-study-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # This path now correctly points inside your 'backend' folder
+      - ./backend/chroma_db_storage:/app/chroma_db_storage
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # The Frontend Service (Configured for Development)
+  # frontend:
+  #   build:
+  #     context: ./frontend # Path to the 'frontend' folder
+  #   container_name: ai-study-frontend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     # This path now correctly points to your 'frontend' source code
+  #     - ./frontend:/app
+  #     # These prevent local folders from overwriting installed packages inside the container
+  #     - /app/node_modules
+  #     - /app/.next
+  #   environment:
+  #     - NEXT_PUBLIC_BACKEND_URL=http://backend:8000
+  #   # This command starts the Next.js development server
+  #   command: npm run dev
+  #   depends_on:
+  #     - backend
+  frontend:
+    build:
+      context: ./frontend
+    container_name: ai-study-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    # This new command ensures dependencies are installed before starting the dev server.
+    # It's a robust fix for the "not found" error.
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - backend
